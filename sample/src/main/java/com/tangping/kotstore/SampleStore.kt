@@ -6,15 +6,15 @@ object SampleStore : KotStoreModel() {
     override val kotStoreName: String
         get() = "sample_store"
 
-    var demoString by stringPref(key = "demo_string", default = "")
+    var demoString by stringStore(key = "demo_string", default = "")
 
-    var demoInt by intPref(key = "demo_int", default = 0)
+    var demoInt by intStore(key = "demo_int", default = 0)
 
-    var demoLong by longPref(key = "demo_long", default = 0L)
+    var demoLong by longStore(key = "demo_long", default = 0L)
 
-    var demoFloat by floatPref(key = "demo_float", default = 0f)
+    var demoFloat by floatStore(key = "demo_float", default = 0f)
 
-    var demoDouble by doublePref(key = "demo_double", default = 0.0)
+    var demoDouble by doubleStore(key = "demo_double", default = 0.0)
 
-    var demoBoolean by booleanPref(key = "demo_boolean", default = false)
+    var demoBoolean by booleanStore(key = "demo_boolean", default = false)
 }

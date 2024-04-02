@@ -40,37 +40,37 @@ abstract class KotStoreModel(
         }
     }
 
-    protected fun stringPref(
+    protected fun stringStore(
         key: String,
         default: String = "",
         syncSave: Boolean = syncSaveAllProperties
     ): ReadWriteProperty<KotStoreModel, String> = StringStore(key, default, syncSave)
 
-    protected fun intPref(
+    protected fun intStore(
         key: String,
         default: Int = 0,
         syncSave: Boolean = syncSaveAllProperties
     ): ReadWriteProperty<KotStoreModel, Int> = IntStore(key, default, syncSave)
 
-    protected fun longPref(
+    protected fun longStore(
         key: String,
         default: Long = 0L,
         syncSave: Boolean = syncSaveAllProperties
     ): ReadWriteProperty<KotStoreModel, Long> = LongStore(key, default, syncSave)
 
-    protected fun floatPref(
+    protected fun floatStore(
         key: String,
         default: Float = 0f,
         syncSave: Boolean = syncSaveAllProperties
     ): ReadWriteProperty<KotStoreModel, Float> = FloatStore(key, default, syncSave)
 
-    protected fun booleanPref(
+    protected fun booleanStore(
         key: String,
         default: Boolean = false,
         syncSave: Boolean = syncSaveAllProperties
     ): ReadWriteProperty<KotStoreModel, Boolean> = BooleanStore(key, default, syncSave)
 
-    protected fun doublePref(
+    protected fun doubleStore(
         key: String,
         default: Double = 0.0,
         syncSave: Boolean = syncSaveAllProperties
