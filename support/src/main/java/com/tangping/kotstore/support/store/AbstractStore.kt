@@ -13,12 +13,12 @@ import kotlinx.coroutines.runBlocking
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-public abstract class AbstractStore<T: Any?> : ReadWriteProperty<KotStoreModel, T> {
-    public abstract val key: String
-    public abstract val default: T
-    public abstract val syncSave: Boolean
+abstract class AbstractStore<T: Any?> : ReadWriteProperty<KotStoreModel, T> {
+    abstract val key: String
+    abstract val default: T
+    abstract val syncSave: Boolean
 
-    public abstract fun getPreferencesKey(): Preferences.Key<T>
+    abstract fun getPreferencesKey(): Preferences.Key<T>
 
     override operator fun getValue(thisRef: KotStoreModel, property: KProperty<*>): T {
         val preferencesKey = getPreferencesKey()
@@ -36,7 +36,7 @@ public abstract class AbstractStore<T: Any?> : ReadWriteProperty<KotStoreModel, 
         saveToStore(thisRef.dataStore, thisRef.scope, getPreferencesKey(), value)
     }
 
-    public fun saveToStore(
+    private fun saveToStore(
         dataStore: DataStore<Preferences>,
         scope: CoroutineScope,
         preferencesKey: Preferences.Key<T>,

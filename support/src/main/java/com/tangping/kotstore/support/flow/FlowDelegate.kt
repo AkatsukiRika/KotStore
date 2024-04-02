@@ -4,7 +4,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class FlowWrapper<TYPE> internal constructor(
+class FlowDelegate<TYPE> internal constructor(
     data: Flow<TYPE>,
     private val onSave: suspend (TYPE) -> Unit
 ) : Flow<TYPE> by data {

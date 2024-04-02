@@ -9,18 +9,18 @@ import kotlinx.coroutines.flow.map
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
-class FlowStore<TYPE, PREF> internal constructor(
+class FlowStore<TYPE, STORE> internal constructor(
     private val dataStore: DataStore<Preferences>,
     private val key: String,
     private val defaultValue: TYPE,
     preferenceKeyFactory: (String) -> Preferences.Key<TYPE>
-) : ReadOnlyProperty<KotStoreFlowModel<PREF>, Flow<TYPE>> {
+) : ReadOnlyProperty<KotStoreFlowModel<STORE>, Flow<TYPE>> {
     private val preferenceKey: Preferences.Key<TYPE> by lazy {
         preferenceKeyFactory(key)
     }
 
-    override fun getValue(thisRef: KotStoreFlowModel<PREF>, property: KProperty<*>): FlowWrapper<TYPE> {
-        return FlowWrapper(
+    override fun getValue(thisRef: KotStoreFlowModel<STORE>, property: KProperty<*>): FlowDelegate<TYPE> {
+        return FlowDelegate(
             dataStore.data.map { it[preferenceKey] ?: defaultValue}
         ) {
             dataStore.edit { settings ->
